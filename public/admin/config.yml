@@ -8,7 +8,7 @@ public_folder: "/uploads"
 collections:
   # Páginas estáticas (ej. Inicio, Sobre mí, Contacto)
   - name: "pages"
-    label: "Páginas"
+    label: "Pages"
     folder: "src/content/pages"
     create: true
     slug: "{{slug}}"
