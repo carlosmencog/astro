@@ -1,8 +1,17 @@
 ---
-import { getEntryBySlug } from 'astro:content';
+import { getCollection, getEntryBySlug } from 'astro:content';
 
-const { slug } = Astro.params;
-const post = await getEntryBySlug('blog', slug);
+// Esta función le dice a Astro qué slugs debe generar
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// Recibe el post como prop
+const { post } = Astro.props;
 ---
 
 <html>
