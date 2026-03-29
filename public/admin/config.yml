@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  # Páginas estáticas (ej. Inicio, Sobre mí, Contacto)
+  - name: "pages"
+    label: "Páginas"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # Blog posts
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Autor", name: "author", widget: "string" }
+      - { label: "Imagen destacada", name: "thumbnail", widget: "image" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  # Configuración general del sitio
+  - name: "settings"
+    label: "Configuración del sitio"
+    files:
+      - file: "src/content/settings/global.json"
+        label: "Global"
+        name: "global"
+        fields:
+          - { label: "Nombre del sitio", name: "siteName", widget: "string" }
+          - { label: "Descripción", name: "description", widget: "text" }
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Color principal", name: "primaryColor", widget: "string" }

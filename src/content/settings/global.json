@@ -1,0 +1,6 @@
+{
+  "siteName": "Mi sitio Astro",
+  "description": "Un sitio creado con Astro + Tailwind + Decap CMS",
+  "logo": "/uploads/logo.png",
+  "primaryColor": "#1d4ed8"
+}
