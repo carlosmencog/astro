@@ -8,7 +8,23 @@
     <!-- Contenedor donde se monta el CMS -->
     <div id="nc-root"></div>
 
-    <!-- Importa el script al final del body -->
+    <!-- Script de Decap CMS -->
     <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
+
+    <!-- Script de Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        // Inicializa el widget
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            // Si no hay usuario, escucha el login
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
