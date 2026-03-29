@@ -9,13 +9,13 @@ collections:
   # Páginas estáticas (ej. Inicio, Sobre mí, Contacto)
   - name: "pages"
     label: "Páginas"
-    folder: "src/pages"
+    folder: "src/content/pages"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Contenido", name: "body", widget: "markdown" }
-
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
   # Blog posts
   - name: "blog"
     label: "Blog"
