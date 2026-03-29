@@ -21,7 +21,7 @@ const { post } = Astro.props;
   <body>
     <h1>{post.data.title}</h1>
     <p>{post.data.date.toDateString()}</p>
-    {post.data.image && <img src={post.data.image} alt={post.data.title} />}
+    {post.data.thumbnail && <img src={post.data.thumbnail} alt={post.data.title} />}
     <article>
       {post.body}
     </article>
