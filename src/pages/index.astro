@@ -2,11 +2,31 @@
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
+
+import { getCollection } from 'astro:content';
+
+// Obtiene todas las páginas creadas en la colección "pages"
+const pages = await getCollection('pages');
+
+// Ordena por fecha descendente (opcional)
+pages.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout>
-	<h1 class="text-4xl font-bold text-blue-600">Hola Tailwind 3</h1>
-	<p class="mt-4 bg-red-500 text-white p-4 rounded">
-		Esto ya está funcionando con Astro + Tailwind + Decap CMS 🚀
-	</p>
+  <h1 class="text-4xl font-bold text-blue-600">Hola Tailwind 3</h1>
+  <p class="mt-4 bg-red-500 text-white p-4 rounded">
+    Esto ya está funcionando con Astro + Tailwind + Decap CMS 🚀
+  </p>
+
+  <h2 class="mt-8 text-2xl font-semibold">Páginas creadas</h2>
+  <ul class="mt-4 space-y-2">
+    {pages.map(page => (
+      <li>
+        <a href={`/pages/${page.slug}/`} class="text-blue-500 hover:underline">
+          {page.data.title}
+        </a>
+        <span class="text-gray-500"> — {page.data.date.toDateString()}</span>
+      </li>
+    ))}
+  </ul>
 </Layout>
